@@ -19,7 +19,7 @@ func NewBoard() Board {
 
 func (b *Board) ToString() string {
 	// TODO: remove after testing
-	b.SetSelection(b.board[4].PosMoves(b.board))
+	b.SetSelection(b.board[1].PosMoves(b.board))
 
 	boardStr := ""
 	for i := 0; i < len(b.board); i++ {
