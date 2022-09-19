@@ -19,7 +19,7 @@ func NewBoard() Board {
 
 func (b *Board) ToString() string {
 	// TODO: remove after testing
-	b.SetSelection(b.board[8].PosMoves(b.board))
+	b.SetSelection(b.board[4].PosMoves(b.board))
 
 	boardStr := ""
 	for i := 0; i < len(b.board); i++ {
@@ -54,6 +54,10 @@ func (b *Board) SetSelection(selector int, selection []int) {
 	}
 	b.selector = selector
 	b.selection = m
+}
+
+func IsValidFieldIndex(index int) bool {
+	return index >= 0 && index < 64
 }
 
 func newBoard() []piece.Piece {
