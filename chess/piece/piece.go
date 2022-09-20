@@ -3,9 +3,9 @@ package piece
 type Color int
 
 const (
-	WHITE Color = iota
+	NONE Color = iota
+	WHITE
 	BLACK
-	NONE
 )
 
 type Piece interface {
