@@ -8,7 +8,7 @@ type Knight struct {
 func (knight Knight) PosMoves(board []Piece) (int, []int) {
 	var moves []int
 	offsets := []int{6, 15, 17, 10, -6, -15, -17, -10}
-	
+
 	for _, i := range offsets {
 		pos := knight.position + i
 
@@ -22,9 +22,9 @@ func (knight Knight) PosMoves(board []Piece) (int, []int) {
 
 func (knight Knight) ToString() string {
 	if knight.color == WHITE {
-		return "S"
+		return "N"
 	}
-	return "s"
+	return "n"
 }
 
 func (knight Knight) GetColor() Color {
