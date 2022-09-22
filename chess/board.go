@@ -1,8 +1,11 @@
 package chess
 
 import (
+	"errors"
 	"fmt"
 	"goChess/chess/piece"
+	"goChess/util"
+	"unicode"
 )
 
 type Board struct {
@@ -58,6 +61,26 @@ func (b *Board) SetSelection(selector int, selection []int) {
 
 func IsValidFieldIndex(index int) bool {
 	return index >= 0 && index < 64
+}
+
+func FromFEN(fen string) error {
+	if !IsValidFen(fen) {
+		return errors.New("invalid FEN")
+	}
+
+	i := 0
+	for j, char := range fen {
+		if unicode.IsDigit(char) {
+			i += util.RuneToDigit(char)
+		} else if char == '/' {
+			// TODO: go to next line
+		}
+		// TODO: add pieces
+		// TODO: add game infos
+	}
+
+	panic("not implemeted")
+	return nil
 }
 
 func newBoard() []piece.Piece {
