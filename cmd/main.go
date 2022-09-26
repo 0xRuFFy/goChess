@@ -12,4 +12,5 @@ func main() {
 	board, err := chess.FromFEN("rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR")
 	ErrorCheck(err)
 	fmt.Println(board.ToString())
+	board.Turn()
 }

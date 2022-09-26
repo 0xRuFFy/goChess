@@ -3,6 +3,7 @@ package chess
 import (
 	"fmt"
 	"goChess/chess/piece"
+	. "goChess/util"
 )
 
 type Board struct {
@@ -20,7 +21,7 @@ func NewBoard() Board {
 
 func (b *Board) ToString() string {
 	// TODO: remove after testing
-	b.SetSelection(b.board[1].PosMoves(b.board))
+	// b.SetSelection(b.board[1].PosMoves(b.board))
 
 	boardStr := ""
 	for i := 0; i < len(b.board); i++ {
@@ -55,6 +56,25 @@ func (b *Board) SetSelection(selector int, selection []int) {
 	}
 	b.selector = selector
 	b.selection = m
+}
+
+func (b *Board) Turn() {
+	for {
+		square := ""
+		for !IsValidSquare(square) {
+			fmt.Print("Select a sqaure on the board (e.g. C5)")
+			fmt.Scan(&square)
+		}
+
+		index := ConvertChessSquareToIndex(square)
+		if b.board[index] == nil {
+			fmt.Println("You selected an empty field")
+		} else {
+			b.SetSelection(b.board[index].PosMoves(b.board))
+			fmt.Println(b.ToString())
+			break
+		}
+	}
 }
 
 func newBoard() []piece.Piece {
